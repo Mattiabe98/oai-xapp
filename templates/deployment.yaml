@@ -41,7 +41,7 @@ spec:
         volumeMounts:
           - mountPath: /usr/local/etc/flexric
             name: configuration
-          - mountPath: /usr/local/etc/flexric
+          - mountPath: /usr/local/etc/flexric/xapp
             name: script-volume
         {{- if .Values.resources.define}}
         resources:
