@@ -57,7 +57,7 @@ spec:
         {{- if .Values.start.xapp}}
         command: [ "/bin/bash", "-c" ]
         args:
-          - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}');
+          - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}')
             if [ -z "$RIC_IP_ADDRESS" ]; then
               echo "Failed to resolve RIC_HOST: $RIC_HOST" >&2;
               exit 1;
