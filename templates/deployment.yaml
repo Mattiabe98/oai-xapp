@@ -58,8 +58,8 @@ spec:
         command: [ "/bin/bash", "-c" ]
         args:
           - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}')
-            echo $RIC_HOST
-            echo $RIC_IP_ADDRESS
+            echo $RIC_HOST;
+            echo $RIC_IP_ADDRESS;
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /usr/local/etc/flexric/flexric.conf | tee /tmp/flexric.conf;
             exec stdbuf -o0 /usr/local/flexric/xApp/c/monitor/xapp_kpm_moni -c /tmp/flexric.conf;
         {{- else}}
