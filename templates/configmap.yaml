@@ -11,3 +11,5 @@ data:
       DB_PATH = /tmp/
       DB_NAME = xapp_db1
 
+  xapp.py: |
+    {{ .Files.Get "xapp.py" | indent 4 }}
