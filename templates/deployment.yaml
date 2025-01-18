@@ -58,10 +58,6 @@ spec:
         command: [ "/bin/bash", "-c" ]
         args:
           - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}')
-            if [ -z "$RIC_IP_ADDRESS" ]; then
-              echo "Failed to resolve RIC_HOST: $RIC_HOST" >&2;
-              exit 1;
-            fi
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /usr/local/etc/flexric/flexric.conf | tee /tmp/flexric.conf;
             exec stdbuf -o0 /usr/local/flexric/xApp/c/monitor/xapp_kpm_moni -c /tmp/flexric.conf;
         {{- else}}
