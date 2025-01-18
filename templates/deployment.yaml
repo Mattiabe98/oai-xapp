@@ -111,7 +111,7 @@ spec:
           name: {{ .Chart.Name }}-configmap
         name: configuration
       - configMap:
-          name: script-configmap
+          name: {{ .Chart.Name }}-script
         name: script-volume
       dnsPolicy: ClusterFirst
       restartPolicy: Always
