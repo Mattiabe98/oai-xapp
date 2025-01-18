@@ -64,7 +64,7 @@ spec:
             getent hosts $RIC_HOST | awk '{print $1}';
             echo $RIC_IP_ADDRESS;
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /usr/local/etc/flexric/flexric.conf | tee /tmp/flexric.conf;
-            exec stdbuf -o0 /usr/local/flexric/xApp/c/monitor/xapp_gtp_mac_rlc_pdcp_moni -c /tmp/flexric.conf;
+            exec python3 /usr/local/etc/flexric/xapp.py -c /tmp/flexric.conf;
         {{- else}}
         command:
           - /bin/sleep
