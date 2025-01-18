@@ -41,8 +41,7 @@ spec:
         volumeMounts:
           - mountPath: /usr/local/etc/flexric
             name: configuration
-          - mountPath: /usr/local/etc/flexric/xapp.py
-            subPath: xapp.py
+          - mountPath: /usr/local/etc/flexric/
             name: script-volume
         {{- if .Values.resources.define}}
         resources:
