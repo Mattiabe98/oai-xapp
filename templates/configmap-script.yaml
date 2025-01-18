@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-script
 data:
-  your_script.py: |
+  xapp.py: |
     {{ .Files.Get "xapp.py" | indent 4 }}
