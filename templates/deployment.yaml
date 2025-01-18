@@ -41,6 +41,9 @@ spec:
         volumeMounts:
           - mountPath: /usr/local/etc/flexric
             name: configuration
+          - mountPath: /usr/local/etc/flexric/xapp.py
+            subPath: xapp.py
+            name: script-volume
         {{- if .Values.resources.define}}
         resources:
           requests:
@@ -107,6 +110,9 @@ spec:
       - configMap:
           name: {{ .Chart.Name }}-configmap
         name: configuration
+      - configMap:
+          name: script-configmap
+        name: script-volume
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       serviceAccountName: {{ .Values.serviceAccount.name }}
