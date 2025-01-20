@@ -65,9 +65,13 @@ spec:
             cp /usr/local/flexric/xApp/python3/xapp/xapp.py /usr/local/flexric/xApp/python3/xapp.py;
             exec python3 /usr/local/flexric/xApp/python3/xapp.py;
         {{- else}}
-        command:
-          - /bin/sleep
-          - infinity
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}');
+            mkdir /usr/local/etc/flexric/;
+            sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/flexric.conf | tee /usr/local/etc/flexric/flexric.conf;
+            cp /usr/local/flexric/xApp/python3/xapp/xapp.py /usr/local/flexric/xApp/python3/xapp.py;
+            /bin/sleep infinity;
         {{- end}}
         env:
           - name: TZ
