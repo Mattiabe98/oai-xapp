@@ -5,7 +5,5 @@ metadata:
 data:
   xapp.py: |
     {{- $files := .Files }}
-    {{- range tuple "xapp.py" }}
-    {{ . }}: |-
-      {{ $files.Get . | indent 4}}    
+    {{ $files.Get "xapp.py" | indent 4}}    
     {{- end }}
