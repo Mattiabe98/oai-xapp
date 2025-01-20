@@ -3,6 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-script
 data:
-  xapp.py: |
 {{- $files := .Files }}
 {{ $files.Get "xapp.py"}}    
