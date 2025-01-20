@@ -6,4 +6,3 @@ data:
   xapp.py: |
     {{- $files := .Files }}
     {{ $files.Get "xapp.py" | indent 4}}    
-    {{- end }}
