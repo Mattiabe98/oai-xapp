@@ -4,5 +4,7 @@ metadata:
   name: {{ .Chart.Name }}-script
 data:
   {{- $files := .Files }}
+  {{- range tuple "xapp.py" }}
   {{ . }}: |-
-  {{ $files.Get "xapp.py"}}    
+    {{ $files.Get . }}    
+  {{- end }}
