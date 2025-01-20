@@ -4,4 +4,4 @@ metadata:
   name: {{ .Chart.Name }}-script
 data:
   xapp.py: |
-      print("This is a test script")
+      {{ .Files.Get "files/xapp.py" | indent 4 }}
