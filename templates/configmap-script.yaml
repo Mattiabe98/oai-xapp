@@ -6,5 +6,5 @@ data:
   {{- $files := .Files }}
   {{- range tuple "xapp.py" "script2.py" }}
   {{ . }}: |-
-    {{ $files.Get . }}    
+    {{ $files.Get . | nindent 4 }}
   {{- end }}
