@@ -5,4 +5,4 @@ metadata:
 data:
   xapp.py: |
     {{- $files := .Files }}
-    {{ $files.Get xapp.py | indent 10}}    
+    {{ $files.Get "xapp.py" | indent 8}}    
