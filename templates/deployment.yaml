@@ -41,7 +41,7 @@ spec:
         volumeMounts:
           - mountPath: /usr/local/etc/flexric
             name: configuration
-          - mountPath: /usr/local/flexric/xApp/python3
+          - mountPath: /usr/local/flexric/xApp/python3/xapp/
             name: script-volume
         {{- if .Values.resources.define}}
         resources:
@@ -63,6 +63,7 @@ spec:
             getent hosts $RIC_HOST | awk '{print $1}';
             echo $RIC_IP_ADDRESS;
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /usr/local/etc/flexric/flexric.conf | tee /tmp/flexric.conf;
+            cp /usr/local/flexric/xApp/python3/xapp/xapp.py /usr/local/flexric/xApp/python3/xapp.py;
             exec python3 /usr/local/flexric/xApp/python3/xapp.py -c /tmp/flexric.conf;
         {{- else}}
         command:
