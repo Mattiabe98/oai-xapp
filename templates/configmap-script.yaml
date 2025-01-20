@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-script
 data:
-  {{- $files := .Files }}
-  {{- range tuple "xapp.py" }}
-  {{ . }}: |-
-    {{ $files.Get . | indent 2}}    
-  {{- end }}
+{{- $files := .Files }}
+{{- range tuple "xapp.py" }}
+{{ . }}: |-
+  {{ $files.Get . | indent 2}}    
+{{- end }}
