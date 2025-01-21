@@ -4,7 +4,7 @@ metadata:
   name: {{ .Chart.Name }}-configmap
 #https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/ci-scripts/conf_files/gNB_SA_DU.conf
 data:
-  flexric.conf: |
+  ric.conf: |
       SM_DIR = "/usr/local/lib/flexric/"
       
       # supported name = NearRT_RIC, E2_Agent, E2_Proxy_Agent, xApp
