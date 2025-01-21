@@ -71,6 +71,7 @@ spec:
             mkdir /usr/local/etc/flexric/;
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/flexric.conf | tee /usr/local/etc/flexric/flexric.conf;
             cp /usr/local/flexric/xApp/python3/xapp/xapp.py /usr/local/flexric/xApp/python3/xapp.py;
+            apt update && apt install nano -y;
             /bin/sleep infinity;
         {{- end}}
         env:
