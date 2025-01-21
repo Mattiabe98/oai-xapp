@@ -9,7 +9,7 @@ data:
       
       # supported name = NearRT_RIC, E2_Agent, E2_Proxy_Agent, xApp
       Name = "xApp"
-      NearRT_RIC_IP = "@RIC_IP_ADDRESS"
+      NearRT_RIC_IP = "@RIC_IP_ADDRESS@"
       E42_Port = 36422
       
       # supported name : MAC, RLC, PDCP, GTP, SLICE;
