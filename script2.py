@@ -10,10 +10,10 @@ from tabulate import tabulate
 from enum import Enum
 import os
 import sys
-_cur_dir = os.path.dirname(os.path.abspath(__file__))
+cur_dir = os.path.dirname(os.path.abspath(__file__))
 # print("Current Directory:", cur_dir)
-sdk_path = _cur_dir + "/../xapp_sdk/"
-sys.path.append(sdk_path)
+# sdk_path = _cur_dir + "/../xapp_sdk/"
+sys.path.append(cur_dir)
 
 import xapp_sdk as ric
 
