@@ -41,7 +41,7 @@ spec:
         volumeMounts:
           - mountPath: /tmp/flexric/
             name: configuration
-          - mountPath: /usr/local/flexric/xApp/python3/xapp/
+          - mountPath: /usr/local/flexric/xApp/files/
             name: script-volume
         {{- if .Values.resources.define}}
         resources:
@@ -61,17 +61,17 @@ spec:
         args:
           - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}');
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/ric.conf | tee /usr/local/etc/flexric/ric.conf;
-            cp /usr/local/flexric/xApp/python3/xapp/xapp.py /usr/local/flexric/xApp/python3/xapp.py;
-            cp /usr/local/flexric/xApp/python3/xapp/script2.py /usr/local/flexric/xApp/python3/script2.py;
+            cp /usr/local/flexric/xApp/files/* /usr/local/flexric/xApp/;
+            cp /flexric/build/examples/xApp/python3/xapp_sdk/* /usr/local/flexric/xApp/;
             pip3 install tabulate;
-            exec python3 /usr/local/flexric/xApp/python3/xapp.py -c /tmp/flexric/ric.conf;
+            exec python3 /usr/local/flexric/xApp/xapp.py -c /tmp/flexric/ric.conf;
         {{- else}}
         command: [ "/bin/bash", "-c" ]
         args:
           - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}');
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/ric.conf | tee /usr/local/etc/flexric/ric.conf;
-            cp /usr/local/flexric/xApp/python3/xapp/xapp.py /usr/local/flexric/xApp/python3/xapp.py;
-            cp /usr/local/flexric/xApp/python3/xapp/script2.py /usr/local/flexric/xApp/python3/script2.py;
+            cp /usr/local/flexric/xApp/files/* /usr/local/flexric/xApp/;
+            cp /flexric/build/examples/xApp/python3/xapp_sdk/* /usr/local/flexric/xApp/;
             apt update && apt install nano -y;
             pip3 install tabulate;
             /bin/sleep infinity;
