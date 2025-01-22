@@ -319,13 +319,13 @@ def send_subscription_req(nodes, cust_sm, oran_sm):
 
         if sm_name == "MAC" and (nodes.id.type == ric.e2ap_ngran_gNB or nodes.id.type == ric.e2ap_ngran_gNB_DU or nodes.id.type == ric.e2ap_ngran_eNB):
             print(f"<<<< Subscribe to {sm_name} with time period {sm_time} >>>>")
-            #send_mac_sub_req(nodes.id, tti)
+            send_mac_sub_req(nodes.id, tti)
         elif sm_name == "RLC" and (nodes.id.type == ric.e2ap_ngran_gNB or nodes.id.type == ric.e2ap_ngran_gNB_DU or nodes.id.type == ric.e2ap_ngran_eNB):
             print(f"<<<< Subscribe to {sm_name} with time period {sm_time} >>>>")
-            #send_rlc_sub_req(nodes.id, tti)
+            send_rlc_sub_req(nodes.id, tti)
         elif sm_name == "PDCP" and (nodes.id.type == ric.e2ap_ngran_gNB or nodes.id.type == ric.e2ap_ngran_gNB_CU or nodes.id.type == ric.e2ap_ngran_eNB):
             print(f"<<<< Subscribe to {sm_name} with time period {sm_time} >>>>")
-            #send_pdcp_sub_req(nodes.id, tti)
+            send_pdcp_sub_req(nodes.id, tti)
         else:
             print(f"not yet implemented function to send subscription for {sm_name}")
 
@@ -345,7 +345,7 @@ def send_subscription_req(nodes, cust_sm, oran_sm):
         if nodes.id.type == ric.e2ap_ngran_eNB:
             continue
         if ran_type == ric.get_e2ap_ngran_name(nodes.id.type):
-            send_kpm_sub_req(nodes.id, tti, act)
+            #send_kpm_sub_req(nodes.id, tti, act)
 
 
         # if nodes.id.type == ric.e2ap_ngran_gNB:
