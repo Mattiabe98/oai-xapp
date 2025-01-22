@@ -64,7 +64,7 @@ spec:
             cp /usr/local/flexric/xApp/files/* /usr/local/flexric/xApp/;
             cp /flexric/build/examples/xApp/python3/xapp_sdk/* /usr/local/flexric/xApp/;
             pip3 install tabulate;
-            exec python3 /usr/local/flexric/xApp/xapp.py;
+            stdbuf -o0 exec python3 /usr/local/flexric/xApp/xapp.py;
         {{- else}}
         command: [ "/bin/bash", "-c" ]
         args:
