@@ -50,7 +50,7 @@ securityContext:
  privileged: true
 
 start:
-  xapp: true
+  xapp: false
   tcpdump: false  # if false then started in sleep mode else it will start capturing packets, nr ue will have a lot of packets per sec better avoid this or add a filter in the deployment.yaml
 
 includeTcpDumpContainer: false #If true it will add a tcpdump container inside network function pod for debugging
