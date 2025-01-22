@@ -346,7 +346,7 @@ def send_subscription_req(nodes, cust_sm, oran_sm):
             continue
         if ran_type == ric.get_e2ap_ngran_name(nodes.id.type):
             print("wouldhe crashed here probs")
-            #send_kpm_sub_req(nodes.id, tti, act)
+            send_kpm_sub_req(nodes.id, tti, act)
 
 
         # if nodes.id.type == ric.e2ap_ngran_gNB:
