@@ -65,6 +65,8 @@ spec:
         env:
           - name: TZ
             value: {{ .Values.config.timeZone }}
+          - name: RIC_HOST
+            value: {{ .Values.config.ricServer }}
       - name: prometheus
         image: "{{ .Values.prometheusimage.repository }}:{{ .Values.prometheusimage.version }}"
         securityContext:
