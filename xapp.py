@@ -105,12 +105,9 @@ class RLCCallback(ric.rlc_cb):
          
          print('RLC Indication tstamp = ' + str(ind.tstamp) + ' latency = ' + str(t_diff) + ' μs')
          for id, rb in enumerate(ind.rb_stats):
-             print('UE ID: ' + str(id))
              #print('RLC RNTI: ' + str(rb.rnti))
              RLC_TX_RETX_PKTS.labels(ue_id=id).set(rb.txpdu_retx_pkts)
              RLC_TX_DROPPED_PKTS.labels(ue_id=id).set(rb.txpdu_dd_pkts)
-             print('RLC PDU TX retransmitted packets: ' + str(rb.txpdu_retx_pkts))  # Example metric
-             print('RLC PDU TX dropped packets: ' + str(rb.txpdu_dd_pkts))  # Example metric
 
 ####################
 #### PDCP INDICATION CALLBACK
@@ -124,7 +121,9 @@ class PDCPCallback(ric.pdcp_cb):
 # Override C++ method: virtual void handle(swig_pdcp_ind_msg_t a) = 0;
  def handle(self, ind):
      # Print swig_pdcp_ind_msg_t
+     print("entering PDCP.."
      if len(ind.rb_stats) > 0:
+         print("rb_stats len: "+ str(len(ind.rb_stats)))
          t_now = time.time_ns() / 1000.0
          t_pdcp = ind.tstamp / 1.0
          t_diff = t_now - t_pdcp
