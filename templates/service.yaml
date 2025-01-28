@@ -12,5 +12,9 @@ spec:
       port: {{ .Values.config.ricPort}}
       targetPort: {{ .Values.config.ricPort}}
       protocol: SCTP
+    - name: prometheus
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
   selector:
     {{- include "oai-xapp.selectorLabels" . | nindent 4 }}
