@@ -121,7 +121,7 @@ class PDCPCallback(ric.pdcp_cb):
 # Override C++ method: virtual void handle(swig_pdcp_ind_msg_t a) = 0;
  def handle(self, ind):
      # Print swig_pdcp_ind_msg_t
-     print("entering PDCP.."
+     print("entering PDCP..")
      if len(ind.rb_stats) > 0:
          print("rb_stats len: "+ str(len(ind.rb_stats)))
          t_now = time.time_ns() / 1000.0
