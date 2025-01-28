@@ -39,9 +39,7 @@ spec:
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
         volumeMounts:
-          - mountPath: /tmp/flexric/
-            name: configuration
-          - mountPath: /usr/local/flexric/xApp/files/
+          - mountPath: /xapp/files/
             name: script-volume
         {{- if .Values.resources.define}}
         resources:
@@ -52,35 +50,18 @@ spec:
             memory: {{ .Values.resources.limits.nf.memory | quote }}
             cpu: {{ .Values.resources.limits.nf.cpu | quote }}
         {{- end}}
-        ports:
-        - containerPort: {{ .Values.config.ricPort}}
-          name: ric
-          protocol: SCTP
-        {{- if .Values.start.xapp}}
         command: [ "/bin/bash", "-c" ]
         args:
-          - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}');
-            sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/ric.conf | tee /usr/local/etc/flexric/ric.conf;
-            cp /usr/local/flexric/xApp/files/* /usr/local/flexric/xApp/;
-            cp /flexric/build/examples/xApp/python3/xapp_sdk/* /usr/local/flexric/xApp/;
-            pip3 install tabulate;
-            stdbuf -o0 python3 /usr/local/flexric/xApp/xapp.py;
-        {{- else}}
-        command: [ "/bin/bash", "-c" ]
-        args:
-          - RIC_IP_ADDRESS=$(getent hosts $RIC_HOST | awk '{print $1}');
-            sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/ric.conf | tee /usr/local/etc/flexric/ric.conf;
-            cp /usr/local/flexric/xApp/files/* /usr/local/flexric/xApp/;
-            cp /flexric/build/examples/xApp/python3/xapp_sdk/* /usr/local/flexric/xApp/;
-            apt update && apt install nano -y;
-            pip3 install tabulate;
-            /bin/sleep infinity;
-        {{- end}}
+          - sleep 10;
+            cp /xapp/files/* /xapp/;
+            cp /flexric/build/examples/xApp/python3/* /xapp/;
+            pip3 install prometheus-client;
+            pip3 install socket;
+            stdbuf -o0 python3 /xapp/xapp.py;
+            tail -f /dev/null;
         env:
           - name: TZ
             value: {{ .Values.config.timeZone }}
-          - name: RIC_HOST
-            value: {{ .Values.config.ricServer }}
       - name: prometheus
         image: "{{ .Values.prometheusimage.repository }}:{{ .Values.prometheusimage.version }}"
         securityContext:
