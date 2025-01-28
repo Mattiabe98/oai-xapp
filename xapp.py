@@ -103,7 +103,7 @@ class RLCCallback(ric.rlc_cb):
          # Update Prometheus metrics
          LATENCY_RLC.observe(t_diff)
          
-         print('RLC Indication tstamp = ' + str(ind.tstamp) + ' latency = ' + str(t_diff) + ' μs')
+         #print('RLC Indication tstamp = ' + str(ind.tstamp) + ' latency = ' + str(t_diff) + ' μs')
          for id, rb in enumerate(ind.rb_stats):
              #print('RLC RNTI: ' + str(rb.rnti))
              RLC_TX_RETX_PKTS.labels(ue_id=id).set(rb.txpdu_retx_pkts)
