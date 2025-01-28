@@ -23,7 +23,7 @@ spec:
       imagePullSecrets:
         {{ toYaml .Values.imagePullSecrets | indent 8 }}
     {{- end }}
-    {{- if .Values.global }}{{ if .Values.global.waitForRadio }}
+    {{ if .Values.waitForRadio }}
       initContainers:
         - name: init
           image: docker.io/oaisoftwarealliance/oai-tcpdump-init:alpine-3.20
