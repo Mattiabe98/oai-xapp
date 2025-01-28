@@ -31,7 +31,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - until ping -c 1  {{ .Values.config.ricServer }}; do echo waiting for oai-flexric to start; sleep 1; done
+            - until ping -c 1  {{ .Values.config.duServer }}; do echo waiting for oai-du to start; sleep 1; done
     {{- end }}{{ end }}
       containers:
       - name: xapp
