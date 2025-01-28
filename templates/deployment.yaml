@@ -32,7 +32,7 @@ spec:
             - /bin/sh
             - -c
             - until ping -c 1  {{ .Values.config.duServer }}; do echo waiting for oai-du to start; sleep 1; done
-    {{- end }}{{ end }}
+    {{- end }}
       containers:
       - name: xapp
         image: "{{ .Values.nfimage.repository }}:{{ .Values.nfimage.version }}"
