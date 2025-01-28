@@ -82,20 +82,6 @@ class MACCallback(ric.mac_cb):
              MAC_UL_MCS2.labels(ue_id=id).set(ue.ul_mcs2)
           
              print('MAC Indication tstamp = ' + str(t_mac) + ' latency = ' + str(t_diff) + ' μs')
-             print('UE ID: ' + str(id))
-             print('DL BER: ' + str(ue.dl_bler))
-             print('UL BER: ' + str(ue.ul_bler))
-             print('BSR: ' + str(ue.bsr))  # Example metric
-             print('WB CQI: ' + str(ue.wb_cqi))  # Example metric
-             print('DL SCHED RB: ' + str(ue.dl_sched_rb))
-             print('UL SCHED RB: ' + str(ue.ul_sched_rb))
-             print('PUSCH SNR: ' + str(ue.pusch_snr))
-             print('PUCCH SNR: ' + str(ue.pucch_snr))
-             print('DL AGGR PRB: ' + str(ue.dl_aggr_prb))
-             print('UL AGGR PRB: ' + str(ue.ul_aggr_prb))
-             print('DL MCS1: ' + str(ue.dl_mcs1))
-             print('UL MCS2: ' + str(ue.ul_mcs2))
-             print('---------------------------------------')
              
 ####################
 #### RLC INDICATION CALLBACK
