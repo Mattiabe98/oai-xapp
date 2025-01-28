@@ -52,12 +52,19 @@ securityContext:
 start:
   xapp: false
   tcpdump: false  # if false then started in sleep mode else it will start capturing packets, nr ue will have a lot of packets per sec better avoid this or add a filter in the deployment.yaml
+  prometheus: true
 
 includeTcpDumpContainer: false #If true it will add a tcpdump container inside network function pod for debugging
 
 tcpdumpimage:
   repository: docker.io/oaisoftwarealliance/oai-tcpdump-init
   version: alpine-3.20
+  #pullPolicy: IfNotPresent or Never or Always
+  pullPolicy: IfNotPresent
+  
+prometheusimage:
+  repository: docker.io/prom/prometheus
+  version: latest
   #pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
