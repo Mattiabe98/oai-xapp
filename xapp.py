@@ -81,7 +81,7 @@ class MACCallback(ric.mac_cb):
              MAC_DL_MCS2.labels(ue_id=id).set(ue.dl_mcs2)
              MAC_UL_MCS2.labels(ue_id=id).set(ue.ul_mcs2)
           
-             print('MAC Indication tstamp = ' + str(t_mac) + ' latency = ' + str(t_diff) + ' μs')
+             #print('MAC Indication tstamp = ' + str(t_mac) + ' latency = ' + str(t_diff) + ' μs')
              
 ####################
 #### RLC INDICATION CALLBACK
@@ -159,13 +159,13 @@ class GTPCallback(ric.gtp_cb):
          # Update Prometheus metrics
          LATENCY_GTP.observe(t_diff)
 
-         print('GTP Indication tstamp = ' + str(ind.tstamp) + ' diff = ' + str(t_diff) + ' μs')
+         #print('GTP Indication tstamp = ' + str(ind.tstamp) + ' diff = ' + str(t_diff) + ' μs')
          for id, stat in enumerate(ind.gtp_stats):
-             print('UE ID: ' + str(id))
+             #print('UE ID: ' + str(id))
              GTP_QFI.labels(ue_id=id).set(stat.qfi)
              GTP_TEID.labels(ue_id=id).set(stat.teidgnb)
-             print('GTP QoS flow indicator: ' + str(stat.qfi))  # Example metric
-             print('GTP gNB tunnel identifier: ' + str(stat.teidgnb))  # Example metric
+             #print('GTP QoS flow indicator: ' + str(stat.qfi))  # Example metric
+             #print('GTP gNB tunnel identifier: ' + str(stat.teidgnb))  # Example metric
 
 
 
