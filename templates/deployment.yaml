@@ -81,6 +81,41 @@ spec:
             value: {{ .Values.config.timeZone }}
           - name: RIC_HOST
             value: {{ .Values.config.ricServer }}
+      - name: prometheus
+        image: "{{ .Values.prometheusimage.repository }}:{{ .Values.prometheusimage.version }}"
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        volumeMounts:
+          - mountPath: /tmp/prometheus/
+            name: prometheus
+        {{- if .Values.resources.define}}
+        resources:
+          requests:
+            memory: {{ .Values.resources.requests.nf.memory | quote }}
+            cpu: {{ .Values.resources.requests.nf.cpu | quote }}
+          limits:
+            memory: {{ .Values.resources.limits.nf.memory | quote }}
+            cpu: {{ .Values.resources.limits.nf.cpu | quote }}
+        {{- end}}
+        ports:
+        - containerPort: 9090
+          name: prometheus
+          protocol: TCP
+        {{- if .Values.start.prometheus}}
+        command: [ "/bin/sh", "-c" ]
+        args:
+          - cp /tmp/prometheus/prometheus.yml /prometheus/prometheus.yml;
+            exec /bin/prometheus;
+        {{- else}}
+        command:
+          - /bin/sleep
+          - infinity
+        {{- end}}
+        env:
+          - name: TZ
+            value: {{ .Values.config.timeZone }}
+
+            
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
         image: "{{ .Values.tcpdumpimage.repository }}:{{ .Values.tcpdumpimage.version }}"
@@ -119,6 +154,9 @@ spec:
       - configMap:
           name: {{ .Chart.Name }}-script
         name: script-volume
+      - configMap:
+          name: {{ .Chart.Name }}-prometheus
+        name: prometheus
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       serviceAccountName: {{ .Values.serviceAccount.name }}
