@@ -6,7 +6,7 @@ data:
   prometheus.yml: |
       # my global config
       global:
-        scrape_interval: 15s
+        scrape_interval: 1s
         evaluation_interval: 30s
         body_size_limit: 15MB
         sample_limit: 1500
