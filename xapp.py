@@ -221,12 +221,12 @@ while True:
  #### GTP INDICATION
  ####################
  
- gtp_hndlr = []
- for i in range(0, len(conn)):
-  gtp_cb = GTPCallback()
-  hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
-  gtp_hndlr.append(hndlr)
-  time.sleep(1)
+ # gtp_hndlr = []
+ # for i in range(0, len(conn)):
+ #  gtp_cb = GTPCallback()
+ #  hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
+ #  gtp_hndlr.append(hndlr)
+ #  time.sleep(1)
  
  print("Queried data, sleeping..")
  time.sleep(1)
@@ -241,8 +241,8 @@ while True:
  # for i in range(0, len(pdcp_hndlr)):
  #  ric.rm_report_pdcp_sm(pdcp_hndlr[i])
  
- for i in range(0, len(gtp_hndlr)):
-  ric.rm_report_gtp_sm(gtp_hndlr[i])
+ # for i in range(0, len(gtp_hndlr)):
+ #  ric.rm_report_gtp_sm(gtp_hndlr[i])
 
  time.sleep(10)
 
