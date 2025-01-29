@@ -210,12 +210,12 @@ while True:
  #### PDCP INDICATION
  ####################
  
- pdcp_hndlr = []
- for i in range(0, len(conn)):
-  pdcp_cb = PDCPCallback()
-  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
-  pdcp_hndlr.append(hndlr) 
-  time.sleep(1)
+ # pdcp_hndlr = []
+ # for i in range(0, len(conn)):
+ #  pdcp_cb = PDCPCallback()
+ #  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
+ #  pdcp_hndlr.append(hndlr) 
+ #  time.sleep(1)
  
  ####################
  #### GTP INDICATION
@@ -238,8 +238,8 @@ while True:
  for i in range(0, len(rlc_hndlr)):
   ric.rm_report_rlc_sm(rlc_hndlr[i])
  
- for i in range(0, len(pdcp_hndlr)):
-  ric.rm_report_pdcp_sm(pdcp_hndlr[i])
+ # for i in range(0, len(pdcp_hndlr)):
+ #  ric.rm_report_pdcp_sm(pdcp_hndlr[i])
  
  for i in range(0, len(gtp_hndlr)):
   ric.rm_report_gtp_sm(gtp_hndlr[i])
