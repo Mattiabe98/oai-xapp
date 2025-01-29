@@ -173,25 +173,9 @@ class GTPCallback(ric.gtp_cb):
 ####  GENERAL 
 ####################
 
-# Determine if the script is running in a docker container
-def is_docker():
- path = '/proc/self/cgroup'
- return (
-     os.path.exists(path) and
-     any('docker' in line for line in open(path, 'r'))
- )
-
-# Determine the host IP address
-def get_host_ip():
- if is_docker():
-     return socket.gethostbyname(socket.gethostname())
- else:
-     return '0.0.0.0'
-
-
 ric.init()
 
-start_http_server(8000)
+start_http_server(8000) # Start Prometheus Exporter
 
 conn = ric.conn_e2_nodes()
 assert(len(conn) > 0)
@@ -244,9 +228,6 @@ while True:
   gtp_hndlr.append(hndlr)
   time.sleep(1)
  
- # Start Prometheus HTTP server
- #host_ip = get_host_ip()
-  # Expose metrics on port 8000
  print("Queried data, sleeping..")
  time.sleep(1)
 
