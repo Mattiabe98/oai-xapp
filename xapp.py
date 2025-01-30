@@ -244,7 +244,7 @@ for i in range(0, len(rlc_hndlr)):
 for i in range(0, len(gtp_hndlr)):
   ric.rm_report_gtp_sm(gtp_hndlr[i])
 
-while ric.try_stop == 0:
+while True:
     time.sleep(1)
 
 print(ric.try_stop)
