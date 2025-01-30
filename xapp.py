@@ -229,13 +229,7 @@ for i in range(0, len(conn)):
     time.sleep(1)
  
 
-while True:
-    print("Queried data, sleeping..")
-    time.sleep(1)
 
-    # If we want to exit remove the callbacks and break the infinite loop.
-    if ric.try_stop != 0:
-        break
 
 ### End
 for i in range(0, len(mac_hndlr)):
@@ -250,5 +244,9 @@ for i in range(0, len(rlc_hndlr)):
 for i in range(0, len(gtp_hndlr)):
   ric.rm_report_gtp_sm(gtp_hndlr[i])
 
+while ric.try_stop == 0:
+    time.sleep(1)
+
+print(ric.try_stop)
 
 print("Test finished")
