@@ -210,7 +210,7 @@ while True:
  
  for i in range(0, len(conn)):
   rlc_cb = RLCCallback()
-  try
+  try:
    hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
   except Error as e:
    print("Error: " + str(e))
