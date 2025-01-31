@@ -183,12 +183,16 @@ for i in range(0, len(conn)):
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc))
  print("Global E2 Node [" + str(i) + "]: PLMN MNC = " + str(conn[i].id.plmn.mnc))
 
+mac_hndlr = []
+rlc_hndlr = []
+gtp_hndlr = []
+# pdcp_hndlr = []
+
 while True:
  ####################
  #### MAC INDICATION
  ####################
  
- mac_hndlr = []
  for i in range(0, len(conn)):
   mac_cb = MACCallback()
   hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
@@ -199,7 +203,7 @@ while True:
  #### RLC INDICATION
  ####################
  
- rlc_hndlr = []
+ 
  for i in range(0, len(conn)):
   rlc_cb = RLCCallback()
   hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
@@ -210,7 +214,7 @@ while True:
  #### PDCP INDICATION
  ####################
  
- # pdcp_hndlr = []
+ 
  # for i in range(0, len(conn)):
  #  pdcp_cb = PDCPCallback()
  #  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
@@ -221,7 +225,7 @@ while True:
  #### GTP INDICATION
  ####################
  
- gtp_hndlr = []
+ 
  for i in range(0, len(conn)):
   gtp_cb = GTPCallback()
   hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
