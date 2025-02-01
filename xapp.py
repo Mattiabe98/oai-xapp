@@ -198,8 +198,8 @@ while True:
   mac_cb = MACCallback()
   try:
    hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
-  except Error as e:
-   print("Error: " + str(e))
+  except:
+   print("Error")
   mac_hndlr.append(hndlr)     
   time.sleep(1)
  
@@ -212,8 +212,8 @@ while True:
   rlc_cb = RLCCallback()
   try:
    hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
-  except Error as e:
-   print("Error: " + str(e))
+  except:
+   print("Error")
   rlc_hndlr.append(hndlr) 
   time.sleep(1)
  
@@ -237,8 +237,8 @@ while True:
   gtp_cb = GTPCallback()
   try:
    hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
-  except Error as e:
-   print("Error: " + str(e))
+  except:
+   print("Error")
   gtp_hndlr.append(hndlr)
   time.sleep(1)
  
@@ -247,17 +247,26 @@ while True:
 
 ### End
  for i in range(0, len(mac_hndlr)):
-  ric.rm_report_mac_sm(mac_hndlr[i])
+  try:
+   ric.rm_report_mac_sm(mac_hndlr[i])
+  except:
+   print("Error")
  
  for i in range(0, len(rlc_hndlr)):
-  ric.rm_report_rlc_sm(rlc_hndlr[i])
+  try:
+   ric.rm_report_rlc_sm(rlc_hndlr[i])
+  except:
+   print("Error")
  
  # for i in range(0, len(pdcp_hndlr)):
  #  ric.rm_report_pdcp_sm(pdcp_hndlr[i])
  
  for i in range(0, len(gtp_hndlr)):
-  ric.rm_report_gtp_sm(gtp_hndlr[i])
-
+  try:
+   ric.rm_report_gtp_sm(gtp_hndlr[i])
+  except:
+   print("Error")
+   
  time.sleep(10)
 
 
