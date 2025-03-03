@@ -265,7 +265,7 @@ for i in range(0, len(gtp_hndlr)):
  except:
   print("Error")
   
-time.sleep(10000000000)
+time.sleep(10000000)
 
 
 # Avoid deadlock. ToDo revise architecture 
