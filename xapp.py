@@ -187,18 +187,18 @@ rlc_hndlr = []
 gtp_hndlr = []
 pdcp_hndlr = []
 
-####################
-#### MAC INDICATION
-####################
+###################
+### MAC INDICATION
+###################
 
-# for i in range(0, len(conn)):
-#  mac_cb = MACCallback()
-#  try:
-#   hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
-#  except:
-#   print("Error")
-#  mac_hndlr.append(hndlr)     
-#  time.sleep(1)
+for i in range(0, len(conn)):
+ mac_cb = MACCallback()
+ try:
+  hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
+ except:
+  print("Error")
+ mac_hndlr.append(hndlr)     
+ time.sleep(1)
 
 ####################
 #### RLC INDICATION
