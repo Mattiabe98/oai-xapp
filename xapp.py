@@ -183,91 +183,89 @@ for i in range(0, len(conn)):
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc))
  print("Global E2 Node [" + str(i) + "]: PLMN MNC = " + str(conn[i].id.plmn.mnc))
 
-while True:
+mac_hndlr = []
+rlc_hndlr = []
+gtp_hndlr = []
+pdcp_hndlr = []
 
- mac_hndlr = []
- rlc_hndlr = []
- gtp_hndlr = []
- pdcp_hndlr = []
- 
- ####################
- #### MAC INDICATION
- ####################
+####################
+#### MAC INDICATION
+####################
 
- for i in range(0, len(conn)):
-  mac_cb = MACCallback()
-  try:
-   hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
-  except:
-   print("Error")
-  mac_hndlr.append(hndlr)     
-  time.sleep(1)
- 
- ####################
- #### RLC INDICATION
- ####################
- 
- 
- for i in range(0, len(conn)):
-  rlc_cb = RLCCallback()
-  try:
-   hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
-  except:
-   print("Error")
-  rlc_hndlr.append(hndlr) 
-  time.sleep(1)
- 
- ####################
- #### PDCP INDICATION
- ####################
- 
- 
- # for i in range(0, len(conn)):
- #  pdcp_cb = PDCPCallback()
- #  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
- #  pdcp_hndlr.append(hndlr) 
- #  time.sleep(1)
- 
- ####################
- #### GTP INDICATION
- ####################
- 
- 
- for i in range(0, len(conn)):
-  gtp_cb = GTPCallback()
-  try:
-   hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
-  except:
-   print("Error")
-  gtp_hndlr.append(hndlr)
-  time.sleep(1)
- 
- print("Queried data, sleeping..")
+for i in range(0, len(conn)):
+ mac_cb = MACCallback()
+ try:
+  hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
+ except:
+  print("Error")
+ mac_hndlr.append(hndlr)     
  time.sleep(1)
 
+####################
+#### RLC INDICATION
+####################
+
+
+for i in range(0, len(conn)):
+ rlc_cb = RLCCallback()
+ try:
+  hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
+ except:
+  print("Error")
+ rlc_hndlr.append(hndlr) 
+ time.sleep(1)
+
+####################
+#### PDCP INDICATION
+####################
+
+
+# for i in range(0, len(conn)):
+#  pdcp_cb = PDCPCallback()
+#  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
+#  pdcp_hndlr.append(hndlr) 
+#  time.sleep(1)
+
+####################
+#### GTP INDICATION
+####################
+
+
+for i in range(0, len(conn)):
+ gtp_cb = GTPCallback()
+ try:
+  hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
+ except:
+  print("Error")
+ gtp_hndlr.append(hndlr)
+ time.sleep(1)
+
+print("Queried data, sleeping..")
+time.sleep(1)
+
 ### End
- for i in range(0, len(mac_hndlr)):
-  try:
-   ric.rm_report_mac_sm(mac_hndlr[i])
-  except:
-   print("Error")
- 
- for i in range(0, len(rlc_hndlr)):
-  try:
-   ric.rm_report_rlc_sm(rlc_hndlr[i])
-  except:
-   print("Error")
- 
- # for i in range(0, len(pdcp_hndlr)):
- #  ric.rm_report_pdcp_sm(pdcp_hndlr[i])
- 
- for i in range(0, len(gtp_hndlr)):
-  try:
-   ric.rm_report_gtp_sm(gtp_hndlr[i])
-  except:
-   print("Error")
-   
- time.sleep(10)
+for i in range(0, len(mac_hndlr)):
+ try:
+  ric.rm_report_mac_sm(mac_hndlr[i])
+ except:
+  print("Error")
+
+for i in range(0, len(rlc_hndlr)):
+ try:
+  ric.rm_report_rlc_sm(rlc_hndlr[i])
+ except:
+  print("Error")
+
+# for i in range(0, len(pdcp_hndlr)):
+#  ric.rm_report_pdcp_sm(pdcp_hndlr[i])
+
+for i in range(0, len(gtp_hndlr)):
+ try:
+  ric.rm_report_gtp_sm(gtp_hndlr[i])
+ except:
+  print("Error")
+  
+time.sleep(10000000000)
 
 
 # Avoid deadlock. ToDo revise architecture 
