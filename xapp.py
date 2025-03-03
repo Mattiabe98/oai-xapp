@@ -240,7 +240,8 @@ for i in range(0, len(conn)):
 #  time.sleep(1)
 
 print("Queried data, sleeping..")
-time.sleep(1)
+
+time.sleep(10000000)
 
 ### End
 for i in range(0, len(mac_hndlr)):
@@ -264,7 +265,6 @@ for i in range(0, len(gtp_hndlr)):
  except:
   print("Error")
   
-time.sleep(10000000)
 
 
 # Avoid deadlock. ToDo revise architecture 
