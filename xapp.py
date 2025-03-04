@@ -204,14 +204,14 @@ for i in range(0, len(conn)):
 ####################
 
 
-for i in range(0, len(conn)):
- rlc_cb = RLCCallback()
- try:
-  hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
- except:
-  print("Error")
- rlc_hndlr.append(hndlr) 
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  rlc_cb = RLCCallback()
+#  try:
+#   hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
+#  except:
+#   print("Error")
+#  rlc_hndlr.append(hndlr) 
+#  time.sleep(1)
 
 ###################
 ### PDCP INDICATION
@@ -240,7 +240,7 @@ for i in range(0, len(conn)):
 
 print("Queried data, sleeping..")
 
-time.sleep(10000000)
+time.sleep(10)
 
 ### End
 for i in range(0, len(mac_hndlr)):
@@ -263,8 +263,8 @@ for i in range(0, len(gtp_hndlr)):
   ric.rm_report_gtp_sm(gtp_hndlr[i])
  except:
   print("Error")
-  
-
+print("Redeploy now")  
+time.sleep(100000)
 
 # Avoid deadlock. ToDo revise architecture 
 while ric.try_stop == 0:
