@@ -218,29 +218,29 @@ for i in range(0, len(conn)):
 ###################
 
 
-for i in range(0, len(conn)):
- pdcp_cb = PDCPCallback()
- hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
- pdcp_hndlr.append(hndlr) 
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  pdcp_cb = PDCPCallback()
+#  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
+#  pdcp_hndlr.append(hndlr) 
+#  time.sleep(1)
 
 ####################
 #### GTP INDICATION
 ####################
 
 
-for i in range(0, len(conn)):
- gtp_cb = GTPCallback()
- try:
-  hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
- except:
-  print("Error")
- gtp_hndlr.append(hndlr)
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  gtp_cb = GTPCallback()
+#  try:
+#   hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
+#  except:
+#   print("Error")
+#  gtp_hndlr.append(hndlr)
+#  time.sleep(1)
 
 print("Queried data, sleeping..")
 
-time.sleep(10)
+time.sleep(5)
 
 ### End
 for i in range(0, len(mac_hndlr)):
