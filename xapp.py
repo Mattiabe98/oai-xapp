@@ -63,12 +63,10 @@ class MACCallback(ric.mac_cb):
              t_now = time.time_ns() / 1000.0
              t_mac = ind.tstamp / 1.0
              t_diff = t_now - t_mac
-             print(id)
-             print(ue)
              # Update Prometheus metrics
              LATENCY_MAC.observe(t_diff)
-             # MAC_DL_BER.labels(ue_id=id).set(ue.dl_bler)
-             # MAC_UL_BER.labels(ue_id=id).set(ue.ul_bler)
+             MAC_DL_BER.labels(ue_id=id).set(ue.dl_bler)
+             MAC_UL_BER.labels(ue_id=id).set(ue.ul_bler)
              # MAC_BSR.labels(ue_id=id).set(ue.bsr)
              # MAC_WB_CQI.labels(ue_id=id).set(ue.wb_cqi)
              # MAC_DL_SCHED_RB.labels(ue_id=id).set(ue.dl_sched_rb)
