@@ -60,8 +60,7 @@ spec:
             cp /flexric/build/examples/xApp/python3/* /xapp/;
             pip3 install prometheus-client;
             sed -e "s/@RIC_IP_ADDRESS@/$RIC_IP_ADDRESS/g" /tmp/flexric/flexric.conf | tee /usr/local/etc/flexric/flexric.conf;
-            stdbuf -o0 python3 /xapp/xapp.py;
-            tail -f /dev/null;
+            exec python3 -u /xapp/xapp.py;
         env:
           - name: TZ
             value: {{ .Values.config.timeZone }}
