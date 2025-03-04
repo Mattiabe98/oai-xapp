@@ -204,14 +204,14 @@ for i in range(0, len(conn)):
 ####################
 
 
-# for i in range(0, len(conn)):
-#  rlc_cb = RLCCallback()
-#  try:
-#   hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
-#  except:
-#   print("Error")
-#  rlc_hndlr.append(hndlr) 
-#  time.sleep(1)
+for i in range(0, len(conn)):
+ rlc_cb = RLCCallback()
+ try:
+  hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
+ except:
+  print("Error")
+ rlc_hndlr.append(hndlr) 
+ time.sleep(1)
 
 ###################
 ### PDCP INDICATION
