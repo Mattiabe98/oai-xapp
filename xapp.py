@@ -65,8 +65,8 @@ class MACCallback(ric.mac_cb):
              t_diff = t_now - t_mac
              # Update Prometheus metrics
              LATENCY_MAC.observe(t_diff)
-             MAC_DL_BER.labels(ue_id=id).set(ue.dl_bler)
-             MAC_UL_BER.labels(ue_id=id).set(ue.ul_bler)
+             # MAC_DL_BER.labels(ue_id=id).set(ue.dl_bler)
+             # MAC_UL_BER.labels(ue_id=id).set(ue.ul_bler)
              # MAC_BSR.labels(ue_id=id).set(ue.bsr)
              # MAC_WB_CQI.labels(ue_id=id).set(ue.wb_cqi)
              # MAC_DL_SCHED_RB.labels(ue_id=id).set(ue.dl_sched_rb)
@@ -80,7 +80,7 @@ class MACCallback(ric.mac_cb):
              # MAC_DL_MCS2.labels(ue_id=id).set(ue.dl_mcs2)
              # MAC_UL_MCS2.labels(ue_id=id).set(ue.ul_mcs2)
           
-             #print('MAC Indication tstamp = ' + str(t_mac) + ' latency = ' + str(t_diff) + ' μs')
+             print('MAC Indication tstamp = ' + str(t_mac) + ' latency = ' + str(t_diff) + ' μs')
              
 ####################
 #### RLC INDICATION CALLBACK
@@ -104,9 +104,9 @@ class RLCCallback(ric.rlc_cb):
          
          #print('RLC Indication tstamp = ' + str(ind.tstamp) + ' latency = ' + str(t_diff) + ' μs')
          for id, rb in enumerate(ind.rb_stats):
-             #print('RLC RNTI: ' + str(rb.rnti))
-             RLC_TX_RETX_PKTS.labels(ue_id=id).set(rb.txpdu_retx_pkts)
-             RLC_TX_DROPPED_PKTS.labels(ue_id=id).set(rb.txpdu_dd_pkts)
+             print('RLC RNTI: ' + str(rb.rnti))
+             # RLC_TX_RETX_PKTS.labels(ue_id=id).set(rb.txpdu_retx_pkts)
+             # RLC_TX_DROPPED_PKTS.labels(ue_id=id).set(rb.txpdu_dd_pkts)
 
 ####################
 #### PDCP INDICATION CALLBACK
@@ -131,13 +131,13 @@ class PDCPCallback(ric.pdcp_cb):
          LATENCY_PDCP.observe(t_diff)
 
          print('PDCP Indication tstamp = ' + str(ind.tstamp) + ' latency = ' + str(t_diff) + ' μs')
-         for id, rb in enumerate(ind.rb_stats):
-             print('UE ID: ' + str(id))
-             #print('PDCP RNTI: ' + str(rb.rnti))
-             PDCP_TX_BYTES.labels(ue_id=id).set(rb.txpdu_bytes)
-             PDCP_RX_BYTES.labels(ue_id=id).set(rb.rxpdu_bytes)
-             print('PDCP total PDU TX in bytes: ' + str(rb.txpdu_bytes))  # Example metric
-             print('PDCP total PDU RX in bytes: ' + str(rb.rxpdu_bytes))  # Example metric
+         # for id, rb in enumerate(ind.rb_stats):
+         #     print('UE ID: ' + str(id))
+         #     #print('PDCP RNTI: ' + str(rb.rnti))
+         #     PDCP_TX_BYTES.labels(ue_id=id).set(rb.txpdu_bytes)
+         #     PDCP_RX_BYTES.labels(ue_id=id).set(rb.rxpdu_bytes)
+         #     print('PDCP total PDU TX in bytes: ' + str(rb.txpdu_bytes))  # Example metric
+         #     print('PDCP total PDU RX in bytes: ' + str(rb.rxpdu_bytes))  # Example metric
 
 ####################
 #### GTP INDICATION CALLBACK
@@ -160,9 +160,9 @@ class GTPCallback(ric.gtp_cb):
 
          #print('GTP Indication tstamp = ' + str(ind.tstamp) + ' diff = ' + str(t_diff) + ' μs')
          for id, stat in enumerate(ind.gtp_stats):
-             #print('UE ID: ' + str(id))
-             GTP_QFI.labels(ue_id=id).set(stat.qfi)
-             GTP_TEID.labels(ue_id=id).set(stat.teidgnb)
+             print('UE ID: ' + str(id))
+             # GTP_QFI.labels(ue_id=id).set(stat.qfi)
+             # GTP_TEID.labels(ue_id=id).set(stat.teidgnb)
              #print('GTP QoS flow indicator: ' + str(stat.qfi))  # Example metric
              #print('GTP gNB tunnel identifier: ' + str(stat.teidgnb))  # Example metric
 
@@ -204,39 +204,39 @@ for i in range(0, len(conn)):
 ####################
 
 
-# for i in range(0, len(conn)):
-#  rlc_cb = RLCCallback()
-#  try:
-#   hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
-#  except:
-#   print("Error")
-#  rlc_hndlr.append(hndlr) 
-#  time.sleep(1)
+for i in range(0, len(conn)):
+ rlc_cb = RLCCallback()
+ try:
+  hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
+ except:
+  print("Error")
+ rlc_hndlr.append(hndlr) 
+ time.sleep(1)
 
 ###################
 ### PDCP INDICATION
 ###################
 
 
-# for i in range(0, len(conn)):
-#  pdcp_cb = PDCPCallback()
-#  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
-#  pdcp_hndlr.append(hndlr) 
-#  time.sleep(1)
+for i in range(0, len(conn)):
+ pdcp_cb = PDCPCallback()
+ hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
+ pdcp_hndlr.append(hndlr) 
+ time.sleep(1)
 
 ####################
 #### GTP INDICATION
 ####################
 
 
-# for i in range(0, len(conn)):
-#  gtp_cb = GTPCallback()
-#  try:
-#   hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
-#  except:
-#   print("Error")
-#  gtp_hndlr.append(hndlr)
-#  time.sleep(1)
+for i in range(0, len(conn)):
+ gtp_cb = GTPCallback()
+ try:
+  hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
+ except:
+  print("Error")
+ gtp_hndlr.append(hndlr)
+ time.sleep(1)
 
 print("Queried data, sleeping..")
 
