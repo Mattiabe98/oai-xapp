@@ -240,7 +240,7 @@ for i in range(0, len(conn)):
 
 print("Queried data, sleeping..")
 
-time.sleep(5)
+time.sleep(2)
 
 ### End
 for i in range(0, len(mac_hndlr)):
