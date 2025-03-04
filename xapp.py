@@ -179,13 +179,12 @@ start_http_server(8000) # Start Prometheus Exporter
 conn = ric.conn_e2_nodes()
 assert(len(conn) > 0)
 for i in range(0, len(conn)):
- ran_type_ptr = conn[i].id.type[0]
+ ran_type_ptr = conn[i].id.type
 
 # Access the enum value (integer) from the pointer
 
 # Print the enum value as an integer (which corresponds to the enum's integer value)
  print(dir(ran_type_ptr))
- print(type(ran_type_ptr))
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc) + " MNC = " + str(conn[i].id.plmn.mnc) + " Type = " + str(int(conn[i].id.type)))
 
 mac_hndlr = []
