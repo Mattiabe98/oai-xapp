@@ -190,28 +190,28 @@ pdcp_hndlr = []
 ### MAC INDICATION
 ###################
 
-for i in range(0, len(conn)):
- mac_cb = MACCallback()
- try:
-  hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
- except:
-  print("Error")
- mac_hndlr.append(hndlr)     
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  mac_cb = MACCallback()
+#  try:
+#   hndlr = ric.report_mac_sm(conn[i].id, ric.Interval_ms_10, mac_cb)
+#  except:
+#   print("Error")
+#  mac_hndlr.append(hndlr)     
+#  time.sleep(1)
 
 ####################
 #### RLC INDICATION
 ####################
 
 
-for i in range(0, len(conn)):
- rlc_cb = RLCCallback()
- try:
-  hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
- except:
-  print("Error")
- rlc_hndlr.append(hndlr) 
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  rlc_cb = RLCCallback()
+#  try:
+#   hndlr = ric.report_rlc_sm(conn[i].id, ric.Interval_ms_10, rlc_cb)
+#  except:
+#   print("Error")
+#  rlc_hndlr.append(hndlr) 
+#  time.sleep(1)
 
 ###################
 ### PDCP INDICATION
@@ -229,14 +229,14 @@ for i in range(0, len(conn)):
 ####################
 
 
-for i in range(0, len(conn)):
- gtp_cb = GTPCallback()
- try:
-  hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
- except:
-  print("Error")
- gtp_hndlr.append(hndlr)
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  gtp_cb = GTPCallback()
+#  try:
+#   hndlr = ric.report_gtp_sm(conn[i].id, ric.Interval_ms_10, gtp_cb)
+#  except:
+#   print("Error")
+#  gtp_hndlr.append(hndlr)
+#  time.sleep(1)
 
 print("Queried data, sleeping..")
 
