@@ -179,7 +179,6 @@ start_http_server(8000) # Start Prometheus Exporter
 conn = ric.conn_e2_nodes()
 assert(len(conn) > 0)
 for i in range(0, len(conn)):
- print(conn[i].id.type.value)
  ran_type_ptr = ctypes.cast(conn[i].id.type, ctypes.POINTER(ctypes.c_int))
  ran_type_value = ran_type_ptr.contents.value
  print(ran_type_value)
