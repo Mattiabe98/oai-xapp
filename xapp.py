@@ -185,7 +185,8 @@ for i in range(0, len(conn)):
  ran_type_value = ran_type_ptr.contents
 
 # Print the enum value as an integer (which corresponds to the enum's integer value)
- print(ran_type_value)
+ print(dir(ran_type_ptr))
+ print(type(ran_type_ptr))
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc) + " MNC = " + str(conn[i].id.plmn.mnc) + " Type = " + str(int(conn[i].id.type)))
 
 mac_hndlr = []
