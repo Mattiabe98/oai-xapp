@@ -179,7 +179,7 @@ start_http_server(8000) # Start Prometheus Exporter
 conn = ric.conn_e2_nodes()
 assert(len(conn) > 0)
 for i in range(0, len(conn)):
- ran_type_ptr = conn[i].id.type
+ ran_type_ptr = conn[i].id.type[0]
 
 # Access the enum value (integer) from the pointer
 
