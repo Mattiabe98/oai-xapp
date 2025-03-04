@@ -4,7 +4,7 @@ import os
 import pdb
 from prometheus_client import start_http_server, Gauge, Summary
 import socket
-
+import ctypes
 
 ####################
 #### PROMETHEUS METRICS
@@ -179,8 +179,9 @@ start_http_server(8000) # Start Prometheus Exporter
 conn = ric.conn_e2_nodes()
 assert(len(conn) > 0)
 for i in range(0, len(conn)):
- print(dir(conn[i]))
- print(dir(conn[i].id))
+ ran_type = conn[i].id.type  # This is still a SWIG object
+ ran_type_value = ctypes.cast(int(ran_type), ctypes.c_int).value  # Extract int value
+ print(conn[i].ran_func)
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc) + " MNC = " + str(conn[i].id.plmn.mnc) + " Type = " + str(conn[i].id.type))
 
 mac_hndlr = []
