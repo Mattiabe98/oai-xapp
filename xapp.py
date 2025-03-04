@@ -179,9 +179,7 @@ start_http_server(8000) # Start Prometheus Exporter
 conn = ric.conn_e2_nodes()
 assert(len(conn) > 0)
 for i in range(0, len(conn)):
- ran_type_ptr = ctypes.cast(conn[i].id.type, ctypes.POINTER(ctypes.c_int))
- ran_type_value = ran_type_ptr.contents.value
- print(ran_type_value)
+ print(conn[i].id.type)
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc) + " MNC = " + str(conn[i].id.plmn.mnc) + " Type = " + str(int(conn[i].id.type)))
 
 mac_hndlr = []
