@@ -184,7 +184,7 @@ for i in range(0, len(conn)):
 # Access the enum value (integer) from the pointer
 
 # Print the enum value as an integer (which corresponds to the enum's integer value)
- print(dir(ran_type_ptr))
+ print(ran_type_ptr.__int__())
  print("Global E2 Node [" + str(i) + "]: PLMN MCC = " + str(conn[i].id.plmn.mcc) + " MNC = " + str(conn[i].id.plmn.mnc) + " Type = " + str(int(conn[i].id.type)))
 
 mac_hndlr = []
