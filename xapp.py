@@ -63,23 +63,24 @@ class MACCallback(ric.mac_cb):
              t_now = time.time_ns() / 1000.0
              t_mac = ind.tstamp / 1.0
              t_diff = t_now - t_mac
-             
+             print(id)
+             print(ue)
              # Update Prometheus metrics
              LATENCY_MAC.observe(t_diff)
-             MAC_DL_BER.labels(ue_id=id).set(ue.dl_bler)
-             MAC_UL_BER.labels(ue_id=id).set(ue.ul_bler)
-             MAC_BSR.labels(ue_id=id).set(ue.bsr)
-             MAC_WB_CQI.labels(ue_id=id).set(ue.wb_cqi)
-             MAC_DL_SCHED_RB.labels(ue_id=id).set(ue.dl_sched_rb)
-             MAC_UL_SCHED_RB.labels(ue_id=id).set(ue.ul_sched_rb)
-             MAC_PUSCH_SNR.labels(ue_id=id).set(ue.pusch_snr)
-             MAC_PUCCH_SNR.labels(ue_id=id).set(ue.pucch_snr)
-             MAC_DL_AGGR_PRB.labels(ue_id=id).set(ue.dl_aggr_prb)
-             MAC_UL_AGGR_PRB.labels(ue_id=id).set(ue.ul_aggr_prb)
-             MAC_DL_MCS1.labels(ue_id=id).set(ue.dl_mcs1)
-             MAC_UL_MCS1.labels(ue_id=id).set(ue.ul_mcs1)
-             MAC_DL_MCS2.labels(ue_id=id).set(ue.dl_mcs2)
-             MAC_UL_MCS2.labels(ue_id=id).set(ue.ul_mcs2)
+             # MAC_DL_BER.labels(ue_id=id).set(ue.dl_bler)
+             # MAC_UL_BER.labels(ue_id=id).set(ue.ul_bler)
+             # MAC_BSR.labels(ue_id=id).set(ue.bsr)
+             # MAC_WB_CQI.labels(ue_id=id).set(ue.wb_cqi)
+             # MAC_DL_SCHED_RB.labels(ue_id=id).set(ue.dl_sched_rb)
+             # MAC_UL_SCHED_RB.labels(ue_id=id).set(ue.ul_sched_rb)
+             # MAC_PUSCH_SNR.labels(ue_id=id).set(ue.pusch_snr)
+             # MAC_PUCCH_SNR.labels(ue_id=id).set(ue.pucch_snr)
+             # MAC_DL_AGGR_PRB.labels(ue_id=id).set(ue.dl_aggr_prb)
+             # MAC_UL_AGGR_PRB.labels(ue_id=id).set(ue.ul_aggr_prb)
+             # MAC_DL_MCS1.labels(ue_id=id).set(ue.dl_mcs1)
+             # MAC_UL_MCS1.labels(ue_id=id).set(ue.ul_mcs1)
+             # MAC_DL_MCS2.labels(ue_id=id).set(ue.dl_mcs2)
+             # MAC_UL_MCS2.labels(ue_id=id).set(ue.ul_mcs2)
           
              #print('MAC Indication tstamp = ' + str(t_mac) + ' latency = ' + str(t_diff) + ' μs')
              
