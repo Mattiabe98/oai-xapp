@@ -219,11 +219,11 @@ for i in range(0, len(conn)):
 ###################
 
 
-for i in range(0, len(conn)):
- pdcp_cb = PDCPCallback()
- hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
- pdcp_hndlr.append(hndlr) 
- time.sleep(1)
+# for i in range(0, len(conn)):
+#  pdcp_cb = PDCPCallback()
+#  hndlr = ric.report_pdcp_sm(conn[i].id, ric.Interval_ms_10, pdcp_cb)
+#  pdcp_hndlr.append(hndlr) 
+#  time.sleep(1)
 
 ####################
 #### GTP INDICATION
